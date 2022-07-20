@@ -2,6 +2,7 @@ import React from 'react'
 import { useForm, Controller, SubmitHandler } from 'react-hook-form'
 // import { Button, Checkbox, Form, Input } from "antd";
 import { Link } from 'react-router-dom'
+import { login } from '../../api/apiAuth'
 import './Login.css'
 type FormValues = {
 	email: string
@@ -16,6 +17,11 @@ function Login() {
 	//   const onFinishFailed = (errorInfo: any) => {
 	//     console.log("Failed:", errorInfo);
 	//   };
+
+	const handleLogin = async (data: any) => {
+		await login(data.email, data.password);
+	}
+
 	const { control, handleSubmit, register } = useForm<FormValues>()
 	return (
 		<div className="login col-span-7">
@@ -25,7 +31,7 @@ function Login() {
 				<div className="login__form">
 					<form
 						className="form"
-						onSubmit={handleSubmit((data) => console.log(data))}
+						onSubmit={handleSubmit((data) => handleLogin(data))}
 					>
 						<div className="form-group">
 							<input className="form-input" {...register('email')} />

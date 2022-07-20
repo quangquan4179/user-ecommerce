@@ -11,7 +11,7 @@ type props = {
 
 export const AuthProvider = ({ children }: props) => {
 	const [auth, setAuth] = useState()
-
+	const [user, setUser] = useState();
 	return (
 		<AuthContext.Provider value={{ auth, setAuth }}>
 			{children}

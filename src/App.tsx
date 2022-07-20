@@ -25,6 +25,7 @@ import RequireAuth from './components/auth/RequiredAurh'
 import LayoutApp from './components/Layout/Layout'
 import { AuthProvider } from './AuthProvider'
 import Login from './components/auth/Login'
+import ProductList from './components/product'
 
 const { Content, Footer, Sider } = Layout
 
@@ -34,9 +35,8 @@ const ROLES = {
 function App() {
 	return (
 		<AuthProvider>
-			<LayoutApp>
 			<Routes>
-				<Route path="/" element={<>aaaa</>}>
+				<Route path="/" element={<LayoutApp><ProductList></ProductList></LayoutApp>}>
 					{/* public routes */}
 				</Route>
 				<Route path="login" element={<Login />} />
@@ -45,8 +45,6 @@ function App() {
 					<Route path="/test" element={<HomePage />} />
 				</Route>
 			</Routes>
-
-			</LayoutApp>
 			
 		</AuthProvider>
 	)
